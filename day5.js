@@ -1,5 +1,4 @@
-import { appendFile, readFileSync } from "fs";
-import { fileURLToPath } from "url";
+import { readFileSync } from "fs";
 
 var data = readFileSync('./input/day5.txt', 'utf8').toString().replace(/\r\n/g," ").split(" ");
 var x = 1
