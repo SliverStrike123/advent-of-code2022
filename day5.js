@@ -34,7 +34,6 @@ function movingpart2(a,b,c){
     let x = data[a] - 1
     for(let i = 1; i <= data[a]; i++){
         stacks[data[c]].unshift(stacks[data[b]][x])
-        
         x--
     }
     for(let i = 1; i<= data[a]; i++){
