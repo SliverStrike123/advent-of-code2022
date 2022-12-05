@@ -29,6 +29,7 @@ function movingpart1(a,b,c){
     return firstletters
 }
 
+//part2
 function movingpart2(a,b,c){
     let x = data[a] - 1
     for(let i = 1; i <= data[a]; i++){
@@ -46,7 +47,7 @@ function movingpart2(a,b,c){
     return firstletters
 }
 
-
+//interchange function for each part ans
 for(let z = 5;z <= data.length; z += 6){
     var result = movingpart2(x,y,z)
     x += 6
