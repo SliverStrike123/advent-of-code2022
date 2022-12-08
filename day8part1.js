@@ -4,7 +4,6 @@ const data = readFileSync('./input/day8.txt', 'utf8').toString().replace(/\r\n/g
 var visibletrees = 0;
 
 for(let row in data){
-    //console.log(visibletrees)
     var num = data[row].split("")
     
     if(row == 0){
@@ -25,10 +24,12 @@ for(let row in data){
             visibletrees += 1
             break
         };
+
         let left = [];
         let right = [];
         let up = [];
         let down = [];
+
         for(let x = 0; x <= i;x++){
             left.push(num[x])
         };
@@ -45,10 +46,12 @@ for(let row in data){
             down.push(data[x][i])
         };
         down.shift();
+
         let l = 0;
         let r = 0;
         let u = 0;
         let d = 0;
+
         left.forEach(element =>{
             
             if(parseInt(num[i]) > parseInt(element)){
@@ -82,13 +85,10 @@ for(let row in data){
                 d += 1
             }
             if(d == down.length){
-                //console.log("visible from down")
                 isvisible = true
             }
         });
         if(isvisible == true){
-
-            //console.log(num[i])
             visibletrees += 1
             continue
         };
