@@ -90,6 +90,6 @@ for(let row in data){
     };
 };
 
-var filter = scores.sort(function(a, b){return b - a});
+var filter = scores.sort((a, b) => b - a);;
 console.log(filter[0]);
 
