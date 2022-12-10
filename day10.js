@@ -1,5 +1,4 @@
 import fs from "fs";
-import { createSecureContext } from "tls";
 
 const data = fs.readFileSync('./input/day10.txt', 'utf8').toString().replace(/\r\n/g,"\n").split("\n");
 const instruction = [];
@@ -9,8 +8,8 @@ for(let line in data){
     instruction.push(data[line].split(" "))
 };
 
-
 var X = 1
+//part1
 for(let i = 0, cycle = 1;i < instruction.length;){
     
     let command = instruction[i][0]
@@ -52,20 +51,26 @@ for(let i = 0, cycle = 1;i < instruction.length;){
 
 console.log(sum.reduce((a,b) => a + b));
 
-
+//part 2
 var screen = new Array()
 X = 1
 var process = 0
-for(let i = 0, cycle = 1;i < instruction.length;cycle++){
-    let spriteposition = new Array(40).fill(".")
-    spriteposition[X-1] = "#"
-    spriteposition[X] = "#"
-    spriteposition[X+1] = "#"
+for(let i = 0, cycle = 1, y = 0;i < instruction.length;cycle++){
     let command = instruction[i][0]
     if(instruction[i].length == 2){
         var value = parseInt(instruction[i][1])
     };
 
+    let least = X-1
+    let most = X+1
+    if(y >= least && y <= most){
+        screen.push("#")
+    }
+    else{
+        screen.push(".")
+    }
+    y++
+    
     switch (command) {
         case "noop":
             i++
@@ -75,28 +80,21 @@ for(let i = 0, cycle = 1;i < instruction.length;cycle++){
             if(process < 2){
                 process ++
             }
-            else if(process == 2){
+            if(process == 2){
                 X += value
                 i++
+                process = 0
             }
         default:
             break;
-    }
-    
-    if(spriteposition.indexOf("#") <= screen.length){
-        screen.push("#")
-    }
-    else{
-        screen.push(".")
-    }
-    
-    
-    if(cycle % 40 === 0 && cycle <= 240){
+    };
+    if(screen.length == 40 && cycle <= 240){
         console.log(screen.join(""))
         screen = []
-    }
-    console.log(spriteposition)
-}
+        y = 0
+    };
+};
+
 
 
 
