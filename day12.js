@@ -8,8 +8,11 @@ const lines = data.split("\n")
 
 const col = data.split("\n")[0].length
 
+var text = "b"
 
-function formGrid(){
+console.log(text.charCodeAt())
+
+function makeMap(){
 
     let grid = {}
     for(let i = 0;i < row;i++){
@@ -22,4 +25,29 @@ function formGrid(){
     }
     return grid
 }
-console.log(formGrid()[1])
+function formGrid(){
+    let map = {}
+    for(let i = 0; i < row; i++){
+        map[i] = new Array(col).fill(".")
+    }
+    return map
+}
+
+function search(){
+    let map = makeMap()
+    let grid = formGrid()
+
+    let len = Object.keys(map).length
+
+    for(let i = 0; i < len; i++){
+        if(grid[i].indexOf("S") != -1){
+            let found = grid[i].indexOf("S")
+            var startingposition = [found, i]
+        }
+    }
+
+    console.log(startingposition)
+
+}
+
+search()
